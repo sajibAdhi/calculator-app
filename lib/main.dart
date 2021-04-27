@@ -22,3 +22,21 @@ class _CalculatorState extends State<Calculator> {
     return Container();
   }
 }
+
+Widget calculatorButton(
+    String btnText, Color btnColor, Color btnTextColor, onPressed) {
+  return Container(
+    // ignore: deprecated_member_use
+    child: RaisedButton(
+      onPressed: onPressed,
+      child: Text(
+        btnText,
+        style: TextStyle(fontSize: 30.0, color: btnTextColor),
+      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+      color: btnColor,
+      padding: EdgeInsets.all(20),
+      // @todo Button
+    ),
+  );
+}
