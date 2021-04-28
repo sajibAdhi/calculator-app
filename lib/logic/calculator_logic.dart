@@ -13,54 +13,54 @@ class CalculatorLogic {
     operation = "";
   }
 
-  void add(){
+  void add() {
     parseNumber();
-    performOperation('+')
+    performOperation('+');
   }
 
-  void sub(){
+  void sub() {
     parseNumber();
-    performOperation('-')
+    performOperation('-');
   }
 
-  void div(){
+  void div() {
     parseNumber();
-    performOperation('/')
+    performOperation('/');
   }
 
-  void mul(){
+  void mul() {
     parseNumber();
-    performOperation('*')
+    performOperation('*');
   }
 
-  void percentage(){
+  void percentage() {
     firstResult = firstResult / 100;
     finalResult = firstResult;
   }
 
-  void negative(){
+  void negative() {
     firstResult.toString().startsWith('-')
-    ? firstResult = firstResult.toString().substring(1)
-    : firstResult = '-' + firstResult.toString();
+        ? firstResult = firstResult.toString().substring(1)
+        : firstResult = '-' + firstResult.toString();
 
     finalResult = firstResult;
   }
 
-  void decimal(){
-    if(!firstResult.toString().contains('.')){
+  void decimal() {
+    if (!firstResult.toString().contains('.')) {
       firstResult = firstResult.toString() + '.0';
     }
     finalResult = firstResult;
   }
 
-  void execute(){
-    if(operation == '+'){
+  void execute() {
+    if (operation == '+') {
       addCalculation();
-    }else if(operation == '-'){
+    } else if (operation == '-') {
       subCalculation();
-    }else if(operation == '/'){
+    } else if (operation == '/') {
       divCalculation();
-    }else if(operation == '*'){
+    } else if (operation == '*') {
       mulCalculation();
     }
   }
@@ -70,39 +70,39 @@ class CalculatorLogic {
     finalResult = firstResult;
   }
 
-  void parseNumber(){
-    if(firstNumber == 0){
-      firstNumber = double.parse(firstResult)
-    }else{
-      secondNumber = double.parse(firstResult)
+  void parseNumber() {
+    if (firstNumber == 0) {
+      firstNumber = double.parse(firstResult);
+    } else {
+      secondNumber = double.parse(firstResult);
     }
   }
 
-  void addCalculation(){
+  void addCalculation() {
     firstResult = (firstNumber + secondNumber).toString();
     firstNumber = double.parse(firstResult);
     finalResult = firstResult;
   }
-  
-  void subCalculation(){
+
+  void subCalculation() {
     firstResult = (firstNumber - secondNumber).toString();
     firstNumber = double.parse(firstResult);
     finalResult = firstResult;
   }
 
-  void divCalculation(){
+  void divCalculation() {
     firstResult = (firstNumber / secondNumber).toString();
     firstNumber = double.parse(firstResult);
     finalResult = firstResult;
   }
 
-  void mulCalculation(){
+  void mulCalculation() {
     firstResult = (firstNumber * secondNumber).toString();
     firstNumber = double.parse(firstResult);
     finalResult = firstResult;
   }
 
-  void performOperation(symbol){
+  void performOperation(symbol) {
     operation = symbol;
     firstResult = "";
   }
