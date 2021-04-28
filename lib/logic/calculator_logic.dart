@@ -13,6 +13,58 @@ class CalculatorLogic {
     operation = "";
   }
 
+  void add(){
+    parseNumber();
+    performOperation('+')
+  }
+
+  void sub(){
+    parseNumber();
+    performOperation('-')
+  }
+
+  void div(){
+    parseNumber();
+    performOperation('/')
+  }
+
+  void mul(){
+    parseNumber();
+    performOperation('*')
+  }
+
+  void percentage(){
+    firstResult = firstResult / 100;
+    finalResult = firstResult;
+  }
+
+  void negative(){
+    firstResult.toString().startsWith('-')
+    ? firstResult = firstResult.toString().substring(1)
+    : firstResult = '-' + firstResult.toString();
+
+    finalResult = firstResult;
+  }
+
+  void decimal(){
+    if(!firstResult.toString().contains('.')){
+      firstResult = firstResult.toString() + '.0';
+    }
+    finalResult = firstResult;
+  }
+
+  void execute(){
+    if(operation == '+'){
+      addCalculation();
+    }else if(operation == '-'){
+      subCalculation();
+    }else if(operation == '/'){
+      divCalculation();
+    }else if(operation == '*'){
+      mulCalculation();
+    }
+  }
+
   void setNumber(number) {
     firstResult = number;
     finalResult = firstResult;
