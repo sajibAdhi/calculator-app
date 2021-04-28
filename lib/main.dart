@@ -1,3 +1,4 @@
+import 'package:calculator_application/logic/calculator_logic.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(CalculatorApp());
@@ -10,6 +11,8 @@ class CalculatorApp extends StatelessWidget {
     );
   }
 }
+
+CalculatorLogic calc = CalculatorLogic();
 
 class Calculator extends StatefulWidget {
   @override
@@ -26,18 +29,167 @@ class _CalculatorState extends State<Calculator> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
+            // Display
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: Text(
-                    "0",
+                    calc.finalResult,
                     style: TextStyle(color: Colors.black, fontSize: 70),
                     textAlign: TextAlign.left,
                   ),
                 )
               ],
+            ),
+            // Buttons
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                calculatorButton('AC', Colors.redAccent, Colors.black, () {
+                  setState(() {
+                    calc.reset();
+                  });
+                }),
+                calculatorButton('+/-', Colors.grey, Colors.black, () {
+                  setState(() {
+                    calc.negative();
+                  });
+                }),
+                calculatorButton('%', Colors.grey, Colors.black, () {
+                  setState(() {
+                    calc.percentage();
+                  });
+                }),
+                calculatorButton('/', Colors.grey, Colors.black, () {
+                  setState(() {
+                    calc.div();
+                  });
+                })
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                calculatorButton('7', Colors.grey, Colors.black, () {
+                  setState(() {
+                    calc.setNumber('7');
+                  });
+                }),
+                calculatorButton('8', Colors.grey, Colors.black, () {
+                  setState(() {
+                    calc.setNumber('8');
+                  });
+                }),
+                calculatorButton('9', Colors.grey, Colors.black, () {
+                  setState(() {
+                    calc.setNumber('9');
+                  });
+                }),
+                calculatorButton('*', Colors.grey, Colors.black, () {
+                  setState(() {
+                    calc.mul();
+                  });
+                })
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                calculatorButton('4', Colors.grey, Colors.black, () {
+                  setState(() {
+                    calc.setNumber('4');
+                  });
+                }),
+                calculatorButton('5', Colors.grey, Colors.black, () {
+                  setState(() {
+                    calc.setNumber('5');
+                  });
+                }),
+                calculatorButton('6', Colors.grey, Colors.black, () {
+                  setState(() {
+                    calc.setNumber('6');
+                  });
+                }),
+                calculatorButton('-', Colors.grey, Colors.black, () {
+                  setState(() {
+                    calc.sub();
+                  });
+                })
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                calculatorButton('1', Colors.grey, Colors.black, () {
+                  setState(() {
+                    calc.setNumber('1');
+                  });
+                }),
+                calculatorButton('2', Colors.grey, Colors.black, () {
+                  setState(() {
+                    calc.setNumber('2');
+                  });
+                }),
+                calculatorButton('3', Colors.grey, Colors.black, () {
+                  setState(() {
+                    calc.setNumber('3');
+                  });
+                }),
+                calculatorButton('+', Colors.grey, Colors.black, () {
+                  setState(() {
+                    calc.add();
+                  });
+                })
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                // ignore: deprecated_member_use
+                RaisedButton(
+                  onPressed: () {
+                    calc.setNumber('0');
+                  },
+                  padding: EdgeInsets.fromLTRB(35, 20, 128, 20),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Text(
+                    "0",
+                    style: TextStyle(
+                      fontSize: 35,
+                      color: Colors.white,
+                    ),
+                  ),
+                  color: Colors.blueGrey,
+                ),
+                calculatorButton('.', Colors.grey, Colors.black, () {
+                  setState(() {
+                    calc.decimal();
+                  });
+                }),
+                calculatorButton('=', Colors.grey, Colors.black, () {
+                  setState(() {
+                    calc.execute();
+                  });
+                }),
+              ],
+            ),
+            SizedBox(
+              height: 10,
             )
           ],
         ),
